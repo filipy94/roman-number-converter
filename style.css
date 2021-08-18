@@ -17,7 +17,11 @@ body::before{
     background-color: rgba(150, 102, 48, 0.45);
 }
 
-h1, h2, h3 {
+h2, h3 {
     color: rgba(0, 0, 0, 0.8);
-    font-weight: 700;
+    font-weight: bold;
+}
+
+h3 {
+    line-height: 0.4;
 }

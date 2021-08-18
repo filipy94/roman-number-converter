@@ -9,25 +9,18 @@ function convertToNumber() {
                                   e === "C" ? e.replace(e, 100) :
                                   e === "D" ? e.replace(e, 500) :
                                   e === "M" ? e.replace(e, 1000) : e.replace(e, 0)); //case don't fill in any case, replace for 0
-    function validNumber(num) {         //a func to test if the arg is a roman number
-        return num != 0;
-    };
-    if (romanArr.every(validNumber) === false) {
-        return "Not a Roman Number";
-    };
-    let number = romanArr
+    //a func to test if the arg is a roman number
+    let stringToNumber = romanArr.map(n => {return n = Number(n)}); //convert string elements to number
+    let number = stringToNumber
                     .map(e => {  //a map to get numbers that are composed by 2 roman letters (i.e IX, XC)
-                        let idx = romanArr.indexOf(e);
-                        if (e < romanArr[idx+1]) {
-                            let twoDigit = romanArr[idx+1] - e;
-                            romanArr.splice(idx+1, 1);
+                        let idx = stringToNumber.indexOf(e);
+                        if (e < stringToNumber[idx+1]) {
+                            let twoDigit = stringToNumber[idx+1] - e;
+                            stringToNumber.splice(idx+1, 1);
                             return e.replace(e, twoDigit);
                         } else return e;
                     })
-                    .map(n => {return n = Number(n)}) //convert string elements to number
                     .reduce((a, b) => a + b); //sum all elements
     
     document.getElementById('romanNumeral').textContent = "Your answer is: " + number;
 };
-
-//console.log(convertToNumber("CMXCIX"));
