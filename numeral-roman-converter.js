@@ -15,12 +15,11 @@ function convertToNumber() {
                     .map(e => {  //a map to get numbers that are composed by 2 roman letters (i.e IX, XC)
                         let idx = stringToNumber.indexOf(e);
                         if (e < stringToNumber[idx+1]) {
-                            let twoDigit = stringToNumber[idx+1] - e;
-                            stringToNumber.splice(idx+1, 1);
-                            return e.replace(e, twoDigit);
+                            return -e;
                         } else return e;
                     })
                     .reduce((a, b) => a + b); //sum all elements
     
     document.getElementById('romanNumeral').textContent = "Your answer is: " + number;
 };
+
